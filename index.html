@@ -104,17 +104,15 @@ body{
     <source src="musica.mp3" type="audio/mp3">
 </audio>
 
-<script>
-
 /* Abrir carta */
+<script>
 function abrirCarta(){
     document.querySelector(".carta").style.transform="scale(0)";
     document.getElementById("contenido").style.transform="scale(1)";
     
-    // Reproducir música
-    document.getElementById("musica").play();
+    const musica = document.getElementById("musica");
+    musica.play();
 }
-
 /* Corazones */
 function crearCorazon(){
     const corazon = document.createElement("div");
@@ -135,4 +133,5 @@ setInterval(crearCorazon,300);
 
 </body>
 </html>
+
 
