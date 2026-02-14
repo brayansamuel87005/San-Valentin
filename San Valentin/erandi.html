@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Para Erandi ❤️</title>
+
+<style>
+body{
+    margin:0;
+    padding:0;
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:linear-gradient(135deg,#ff758c,#ff7eb3);
+    font-family:'Segoe UI', sans-serif;
+    overflow:hidden;
+}
+
+/* Carta */
+.carta{
+    width:300px;
+    height:200px;
+    background:#ff4d6d;
+    position:relative;
+    border-radius:10px;
+    cursor:pointer;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    box-shadow:0 10px 30px rgba(0,0,0,0.3);
+    transition:1s;
+}
+
+.carta::before{
+    content:"💌";
+    font-size:60px;
+}
+
+/* Contenido */
+.contenido{
+    position:absolute;
+    width:400px;
+    background:white;
+    color:#333;
+    padding:30px;
+    border-radius:15px;
+    text-align:center;
+    transform:scale(0);
+    transition:0.7s;
+    box-shadow:0 10px 30px rgba(0,0,0,0.3);
+}
+
+.contenido h1{
+    color:#ff4d6d;
+    animation:latido 1.5s infinite;
+}
+
+@keyframes latido{
+    0%,100%{transform:scale(1);}
+    50%{transform:scale(1.2);}
+}
+
+/* Corazones */
+.corazon{
+    position:absolute;
+    color:white;
+    animation:flotar 6s linear infinite;
+}
+
+@keyframes flotar{
+    from{
+        transform:translateY(100vh) scale(1);
+        opacity:1;
+    }
+    to{
+        transform:translateY(-10vh) scale(1.5);
+        opacity:0;
+    }
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="carta" onclick="abrirCarta()"></div>
+
+<div class="contenido" id="contenido">
+    <h1>❤️ Erandi ❤️</h1>
+    <p>
+        Niña hermosa, Chaparrita de 1.63✨<br><br>
+        ¿Quieres ser mi San Valentín? 😍
+    </p>
+
+    <button onclick="alert('Sabía que dirías que sí, Erandi 💕')"
+    style="padding:10px 20px;border:none;border-radius:20px;background:#ff4d6d;color:white;font-size:16px;cursor:pointer;">
+    Sí 💖
+    </button>
+</div>
+
+<!-- Música MP3 -->
+<audio id="musica" loop>
+    <source src="Grupo Marca Registrada - La Guerita [Lyric Video].mp3" type="audio/mp3">
+</audio>
+
+<script>
+
+/* Abrir carta */
+function abrirCarta(){
+    document.querySelector(".carta").style.transform="scale(0)";
+    document.getElementById("contenido").style.transform="scale(1)";
+    
+    // Reproducir música
+    document.getElementById("musica").play();
+}
+
+/* Corazones */
+function crearCorazon(){
+    const corazon = document.createElement("div");
+    corazon.classList.add("corazon");
+    corazon.innerHTML = "❤️";
+    corazon.style.left = Math.random() * 100 + "vw";
+    corazon.style.fontSize = (Math.random()*20 + 10) + "px";
+    document.body.appendChild(corazon);
+
+    setTimeout(()=>{
+        corazon.remove();
+    },6000);
+}
+
+setInterval(crearCorazon,300);
+
+</script>
+
+</body>
+</html>
